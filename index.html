@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock, Paper, Scissors!</title>
+</head>
+<body>
+    <script>
+        
+        let combatOptions = ['ROCK','PAPER','SCISSORS'];
+        
+        function getComputerSelection (computerSelection) {
+            var computerSelection = combatOptions[Math.floor(Math.random()*3)];
+            return computerSelection;
+        };
+
+        function getPlayerSelection (playerSelection) {
+            var playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
+                switch (playerSelection) {
+                    case "ROCK" :
+                    playerSelection = playerSelection;
+                    break;
+                    case "PAPER" :
+                    playerSelection = playerSelection;
+                    break;
+                    case "SCISSORS" :
+                    playerSelection = playerSelection;
+                    break;
+                    default : alert('Yikes, looks like you misspelled one of the options... reload and try again!');
+                }
+            return playerSelection;
+        };
+
+        function determineWinner (playerSelection, computerSelection) {
+            if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+                return('you win');
+            } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
+                return('you lose');
+            } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+                return('you win');
+            } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
+                return('you lose');
+            } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+                return('you lose');
+            } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+                return('you win');
+            } else {
+                return('Tie game, no winner.')
+            }
+        };
+
+        function playRound(){
+            const playerPlay = getPlayerSelection();
+            const computerPlay = getComputerSelection();
+            console.log(`you choose ${playerPlay} and the computer choose ${computerPlay}...`);
+            console.log(determineWinner(playerPlay,computerPlay));
+        };
+
+        playRound();
+
+    </script>
+
+
+
+    
+</body>
+</html>
