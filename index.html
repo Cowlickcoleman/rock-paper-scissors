@@ -9,45 +9,48 @@
 <body>
     <script>
         
-        let combatOptions = ['ROCK','PAPER','SCISSORS'];
+        const combatOptions = ['ROCK','PAPER','SCISSORS'];
+        let computerScore = 0;
+        let playerScore = 0;
+
+
+        // function playGame(numOfRounds){
+        //     do {
+
+        //         function determineWinner(playerPlay,computerPlay);
+        // };
         
         function getComputerSelection (computerSelection) {
             var computerSelection = combatOptions[Math.floor(Math.random()*3)];
             return computerSelection;
         };
 
-        function getPlayerSelection (playerSelection) {
+        function getPlayerSelection () {
             var playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
-                switch (playerSelection) {
-                    case "ROCK" :
-                    playerSelection = playerSelection;
-                    break;
-                    case "PAPER" :
-                    playerSelection = playerSelection;
-                    break;
-                    case "SCISSORS" :
-                    playerSelection = playerSelection;
-                    break;
-                    default : alert('Yikes, looks like you misspelled one of the options... reload and try again!');
-                }
-            return playerSelection;
+                if(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
+                   return playerSelection;
+                }  
+                alert("yo, that's not an option... try again.");
+            getPlayerSelection();
         };
 
         function determineWinner (playerSelection, computerSelection) {
-            if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-                return('you win');
-            } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-                return('you lose');
-            } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-                return('you win');
-            } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-                return('you lose');
-            } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-                return('you lose');
-            } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-                return('you win');
+            alert(`Player choose ${playerSelection} and the computer picked ${computerSelection}`);
+            if (playerSelection===computerSelection) {
+                alert('it\'s a tie! No points awarded');
+                return 0;
+            }
+            if (
+                (playerSelection === "ROCK" && computerSelection === "SCISSORS")
+                ||
+                (playerSelection === "PAPER" && computerSelection === "ROCK")
+                ||
+                (playerSelection === "SCISSORS" && computerSelection === "PAPER"))
+                { alert ("Player wins the round!");
+                return 1;
             } else {
-                return('Tie game, no winner.')
+                alert("Computer wins the round!");
+                return 2;
             }
         };
 
