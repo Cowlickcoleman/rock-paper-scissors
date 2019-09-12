@@ -10,58 +10,92 @@
     <script>
         
         const combatOptions = ['ROCK','PAPER','SCISSORS'];
-        let computerScore = 0;
-        let playerScore = 0;
+        var computerScore = 0;
+        var playerScore = 0;
 
+        function playGame(numOfRounds){
+            do {
+                var playerPlay = getPlayerSelection();
+                var computerPlay = getComputerSelection();
+                var result = determineWinner(playerPlay,computerPlay);
+                updateScore(result);
+                if (result !== 0) {
+                    numOfRounds--;
+                }
+                alert(`The current score is Player: ${playerScore} vs. Computer ${computerScore}`);
+            } while (numOfRounds > 0);
 
-        // function playGame(numOfRounds){
-        //     do {
-
-        //         function determineWinner(playerPlay,computerPlay);
-        // };
-        
-        function getComputerSelection (computerSelection) {
-            var computerSelection = combatOptions[Math.floor(Math.random()*3)];
-            return computerSelection;
-        };
-
-        function getPlayerSelection () {
-            var playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
-                if(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
-                   return playerSelection;
-                }  
-                alert("yo, that's not an option... try again.");
-            getPlayerSelection();
-        };
-
-        function determineWinner (playerSelection, computerSelection) {
-            alert(`Player choose ${playerSelection} and the computer picked ${computerSelection}`);
-            if (playerSelection===computerSelection) {
-                alert('it\'s a tie! No points awarded');
-                return 0;
-            }
-            if (
-                (playerSelection === "ROCK" && computerSelection === "SCISSORS")
-                ||
-                (playerSelection === "PAPER" && computerSelection === "ROCK")
-                ||
-                (playerSelection === "SCISSORS" && computerSelection === "PAPER"))
-                { alert ("Player wins the round!");
-                return 1;
+            if (playerScore > computerScore) {
+                alert('Congratulations! You win!')
             } else {
-                alert("Computer wins the round!");
-                return 2;
-            }
+                alert('you lose.')
+            };
+
+            clearScores();
         };
 
-        function playRound(){
-            const playerPlay = getPlayerSelection();
-            const computerPlay = getComputerSelection();
-            console.log(`you choose ${playerPlay} and the computer choose ${computerPlay}...`);
-            console.log(determineWinner(playerPlay,computerPlay));
-        };
+    // --------------------------- FUNCTIONS -------------------
+    
+        // Generate a random computer selection
+            function getComputerSelection (computerSelection) {
+                var computerSelection = combatOptions[Math.floor(Math.random()*3)];
+                return computerSelection;
+            };
 
-        playRound();
+        // prompt the user for a selection
+            function getPlayerSelection () {
+                var playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
+                    if(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
+                    return playerSelection;
+                    }  
+                    alert("yo, that's not an option... try again.");
+                getPlayerSelection();
+            };
+        
+        // compare the selections and determins a winner
+            function determineWinner (playerSelection, computerSelection) {
+
+                alert(`Player choose ${playerSelection} and the computer picked ${computerSelection}`);
+                if (playerSelection===computerSelection) {
+                    alert('it\'s a tie! No points awarded');
+                    return 0;
+                }
+                if (
+                    (playerSelection === "ROCK" && computerSelection === "SCISSORS")
+                    ||
+                    (playerSelection === "PAPER" && computerSelection === "ROCK")
+                    ||
+                    (playerSelection === "SCISSORS" && computerSelection === "PAPER"))
+                    { alert ("Player wins the round!");
+                    return 1;
+                } else {
+                    alert ("Computer wins the round!");
+                    return 2;
+                }
+            };
+
+        // attribute a score based upon the result
+            function updateScore (result) {
+
+                if(result === 0) {
+                    playerScore += 0;
+                    computerScore +=0;
+                };
+                if (result === 1) {
+                    playerScore++;
+                };
+                if (result === 2) {
+                    computerScore++;
+                };
+            };
+
+        // clears the scores at the end of the game
+            function clearScores() {
+                playerScore = 0;
+                computerScore = 0;
+            };
+
+        playGame(5);
 
     </script>
 
