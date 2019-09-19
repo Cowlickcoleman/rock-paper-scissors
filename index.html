@@ -19,19 +19,24 @@
                 var computerPlay = getComputerSelection();
                 var result = determineWinner(playerPlay,computerPlay);
                 updateScore(result);
-                if (result !== 0) {
-                    numOfRounds--;
-                }
-                alert(`The current score is Player: ${playerScore} vs. Computer ${computerScore}`);
-            } while (numOfRounds > 0);
+                // if (result !== 0) {
+                //     numOfRounds--;
+                // }
+                alert(`Best of 5. The current score is Player: ${playerScore} vs. Computer ${computerScore}`);
+            } while (playerScore < (numOfRounds/2) && computerScore < (numOfRounds/2));
 
             if (playerScore > computerScore) {
                 alert('Congratulations! You win!')
             } else {
                 alert('you lose.')
             };
-
-            clearScores();
+            
+            if (confirm("play again?")){
+                clearScores()
+                playGame(5)
+            } else {
+                alert("good game. see ya!")
+            };
         };
 
     // --------------------------- FUNCTIONS -------------------
@@ -44,7 +49,7 @@
 
         // prompt the user for a selection
             function getPlayerSelection () {
-                var playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
+                var playerSelection = prompt('Rock, Paper, or Scissors?',).toUpperCase();
                     if(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
                     return playerSelection;
                     }  
