@@ -1,15 +1,48 @@
-.container {
-    width:100%;
-    display: flex;
+
+.container{
+    display:flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
+    width:80vw;
 }
-button {
-    min-width: 200px;
-    height: 50px;
-    margin: auto;
-    border: 2px solid orangered;
 
+.row {
+    display:flex;
+    flex-direction:row;
+    min-width: 100%;
+    min-height: 33%;
+}
+
+.rectangle {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    background-color:gray;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+.long {
+    width:45%;
+}
+
+.box {
+    height:100%;
+    width: 33%;
+    background-color: salmon;
+    border: 1px solid lightgray;
+    align-items:center;
+    justify-content: center;
+}
+
+
+#scoreDialogue{
+    font-size: 16px;
+    color: whitesmoke;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#playerScoreBoard, #computerScoreBoard {
+    font-size: 42px;
+    color:whitesmoke;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

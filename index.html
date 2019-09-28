@@ -8,14 +8,26 @@
     <title>Rock, Paper, Scissors!</title>
 </head>
 <body>
-    <div class=""></div>
-        <button id= "rock">Rock!</button>
-        <button id = "paper">Paper!</button>
-        <button id = "scissors">Scissors!</button>
+    <div class="container">
+        <div class="row">
+            <div class="rectangle" id="playerScoreBoard"></div>
+            <div class="rectangle" id="scoreAnnouncement"></div>
+            <div class="rectangle" id="computerScoreBoard"></div>
+        </div>
+        <div class="row">
+            <div class="rectangle long" id="playerImg"> [insert hand image]</div>
+            <div class="rectangle long" id="computerImg"> [insert hand image]</div>
+        </div>
+        <div class="row">
+            <div class="rectangle">
+                <button class="box"id="rock">rock</button>
+                <button class="box" id="paper">paper</button>
+                <button class="box"id="scissors">scissors</button>
+            </div>
+            <div class="rectangle" id="scoreDialogue"></div>
+            <div class="rectangle"></div>
+        </div>
     </div>
-
-
-
-    
+    <script src="./logic.js"></script>
 </body>
 </html>
