@@ -2,7 +2,7 @@
 .container{
     display:flex;
     flex-wrap: wrap;
-    width:80vw;
+    height:800px;
 }
 
 .row {
@@ -14,35 +14,44 @@
 
 .rectangle {
     display: flex;
-    width: 30%;
+    width: 33.3%;
     height: 100%;
-    background-color:gray;
+    background-color:whitesmoke;
     border: 1px solid lightgray;
     text-align: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .long {
-    width:45%;
+    width:50%;
 }
 
 .box {
     height:100%;
     width: 33%;
-    background-color: salmon;
-    border: 1px solid lightgray;
     align-items:center;
     justify-content: center;
+    background-color:whitesmoke;
 }
 
 
 #scoreDialogue{
-    font-size: 16px;
-    color: whitesmoke;
+    font-size: 40px;
+    color: grey;
+    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#scoreAnnouncement{
+    font-size:120px;
+    font-weight: bolder;
+    color: #ec0088;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 #playerScoreBoard, #computerScoreBoard {
-    font-size: 42px;
-    color:whitesmoke;
+    font-size: 120px;
+    color:grey;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

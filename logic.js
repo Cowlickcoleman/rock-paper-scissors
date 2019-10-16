@@ -4,10 +4,14 @@ var btnRock = document.querySelector('#rock');
 var btnPaper = document.querySelector('#paper');
 var btnScissors = document.querySelector('#scissors');
 var scoreDialogue = document.querySelector('#scoreDialogue');
-var scoreBoard = document.querySelector('#scoreBoard');
+var playerScoreBoard = document.querySelector('#playerScoreBoard');
+var computerScoreBoard = document.querySelector('#computerScoreBoard');
+var scoreAnnouncement= document.querySelector('#scoreAnnouncement');
+
 
 // setup the game
-scoreBoard.textContent='Player: 0 Computer: 0';
+playerScoreBoard.textContent='0';
+computerScoreBoard.textContent='0';
 scoreDialogue.textContent='The original dispute settler. Choose an option to begin!';
 const combatOptions = ['ROCK','PAPER','SCISSORS'];
 
@@ -21,13 +25,21 @@ var currentRound = 0;
 // determine length of Game
 function lengthOfGame() {
     if (playerScore > (numOfRounds/2)){
-            scoreDialogue.textContent='Congratulations! You win!';
+            scoreDialogue.textContent='Congratulations!';
+            scoreAnnouncement.textContent='Winner!';
             clearScores();
         } else if (computerScore > (numOfRounds/2)){
-            scoreDialogue.textContent='sorry... you lose.';
+            scoreDialogue.textContent=':(';
+            scoreAnnouncement.textContent='Loser!';
             clearScores();
         } else {
         };
+};
+
+// increase score upon completion of each round
+function updateScoreBoards() {
+    playerScoreBoard.textContent=`${playerScore}`;
+    computerScoreBoard.textContent=`${computerScore}`;
 };
 
 // reset game upon completion
@@ -36,31 +48,42 @@ function clearScores() {
     computerScore = 0;
 };
 
+function clearAnnouncement() {
+    scoreAnnouncement.textContent='';
+};
+
+
 // button functionality
 btnRock.addEventListener("click",function(){
+    clearAnnouncement();
     var playerPlay = 'ROCK';
     var computerPlay = getComputerSelection();
     var result = determineWinner(playerPlay,computerPlay);
+    updateImages();
     updateScore(result);
-    scoreBoard.textContent=`Player: ${playerScore} Computer: ${computerScore}`;
+    updateScoreBoards();
     lengthOfGame();
 });
 
 btnPaper.addEventListener("click",function(){
+    clearAnnouncement();
     var playerPlay = 'PAPER';
     var computerPlay = getComputerSelection();
     var result = determineWinner(playerPlay,computerPlay);
+    updateImages();
     updateScore(result);
-    scoreBoard.textContent=`Player: ${playerScore} Computer: ${computerScore}`;
+    updateScoreBoards();
     lengthOfGame();
 });
 
 btnScissors.addEventListener("click",function(){
+    clearAnnouncement();
     var playerPlay = 'SCISSORS';
     var computerPlay = getComputerSelection();
     var result = determineWinner(playerPlay,computerPlay);
+    updateImages();
     updateScore(result);
-    scoreBoard.textContent=`Player: ${playerScore} Computer: ${computerScore}`;
+    updateScoreBoards();
     lengthOfGame();
 });  
 
@@ -100,5 +123,21 @@ function determineWinner (playerSelection, computerSelection) {
         return 1;
     } else {
         return 2;
+    };
+};
+
+
+function updateImages(playerSelection) {
+    var playerImg = document.createElement('img');
+    playerImg.src='./media/rps_logo.png';
+    var src = document.getElementById('playerImg');
+    src.appendChild(playerImg);
+
+    if(playerSelection==='ROCK') {
+        playerImg.setAttribute("id","img-rock")
+    } else if (playerSelection==='PAPER') {
+        playerImg.setAttribute("id","img-paper")
+    } else if (playerSelection==='SCISSORS') {
+        playerImg.setAttribute("id","img-scissors")
     };
 };
